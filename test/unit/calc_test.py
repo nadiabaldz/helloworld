@@ -51,6 +51,13 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0, self.calc.multiply(-1, 0))
         self.assertEqual(-2, self.calc.multiply(-1, 2))
         self.assertRaises(TypeError, self.calc.multiply, "0", 0)
+
+     def test_multiply_method_fails_with_nan_parameter(self):
+        self.assertRaises(TypeError, self.calc.multiply, "2", 2)
+        self.assertRaises(TypeError, self.calc.multiply, 2, "2")
+        self.assertRaises(TypeError, self.calc.multiply, "2", "2")
+        self.assertRaises(TypeError, self.calc.multiply, None, 2)
+        self.assertRaises(TypeError, self.calc.multiply, 2, object())
         
     def test_power_method_returns_correct_result(self):
         self.assertEqual(4, self.calc.power(2, 2))
@@ -58,6 +65,14 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(1, self.calc.power(-1, 0))
         self.assertEqual(-27, self.calc.power(-3, 3))
         self.assertRaises(TypeError, self.calc.power, "0", 0)
+
+    def test_power_method_fails_with_nan_parameter(self):
+        self.assertRaises(TypeError, self.calc.power, "2", 2)
+        self.assertRaises(TypeError, self.calc.power, 2, "2")
+        self.assertRaises(TypeError, self.calc.power, "2", "2")
+        self.assertRaises(TypeError, self.calc.power, None, 2)
+        self.assertRaises(TypeError, self.calc.power, 2, object())
+
         
     def test_substract_method_returns_correct_result(self):
         self.assertEqual(4, self.calc.substract(10, 6))
@@ -66,6 +81,14 @@ class TestCalculate(unittest.TestCase):
         self.assertEqual(0, self.calc.substract(0, 0))
         self.assertEqual(0, self.calc.substract(0, 0))
         self.assertRaises(TypeError, self.calc.substract, "0", 0)
+
+     def test_substract_method_fails_with_nan_parameter(self):
+        self.assertRaises(TypeError, self.calc.substract, "2", 2)
+        self.assertRaises(TypeError, self.calc.substract, 2, "2")
+        self.assertRaises(TypeError, self.calc.substract, "2", "2")
+        self.assertRaises(TypeError, self.calc.substract, None, 2)
+        self.assertRaises(TypeError, self.calc.substract, 2, None)
+        self.assertRaises(TypeError, self.calc.substract, object(), 2)
         
 if __name__ == "__main__":  # pragma: no cover
     unittest.main()
